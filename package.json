@@ -1,6 +1,6 @@
 {
   "name": "@byu-oit/uapi-ts",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "TypeScript definitions of UAPI elements",
   "main": "index.ts",
   "scripts": {
