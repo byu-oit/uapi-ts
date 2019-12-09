@@ -38,8 +38,8 @@ export namespace UAPI {
     related_resource?: string
   }
 
-  export interface ValueArray {
-    value_array: Value[]
+  export interface ValueArray<Options> {
+    value_array: Array<Value | (Value & Options)>
     api_type: 'read-only' | 'modifiable' | 'system' | 'derived' | 'unauthorized' | 'related'
     description?: string
     long_description?: string
@@ -48,15 +48,15 @@ export namespace UAPI {
     related?: string
   }
 
-  export interface ComplexObject {
-    object: { [key: string]: Value}
+  export interface ComplexObject<Options> {
+    object: { [key: string]: Value | (Value & Options)}
     api_type: 'read_only' | 'related'
     display_label: string
     related: string
   }
 
-  export interface ComplexObjectArray {
-    object_array: { [key: string]: Value}[]
+  export interface ComplexObjectArray<Options> {
+    object_array: { [key: string]: Value | (Value & Options)}[]
     api_type: 'read_only' | 'related'
     display_label: string
     related: string
