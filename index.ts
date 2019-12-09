@@ -50,14 +50,14 @@ export namespace UAPI {
 
   export interface ComplexObject<Options> {
     object: { [key: string]: Value | (Value & Options)}
-    api_type: 'read_only' | 'related'
+    api_type: 'read-only' | 'related'
     display_label?: string
     related?: string
   }
 
   export interface ComplexObjectArray<Options> {
     object_array: { [key: string]: Value | (Value & Options)}[]
-    api_type: 'read_only' | 'related'
+    api_type: 'read-only' | 'related'
     display_label?: string
     related?: string
   }
