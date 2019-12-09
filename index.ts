@@ -39,7 +39,7 @@ export namespace UAPI {
   }
 
   export interface ValueArray {
-    value_array: Value
+    value_array: Value[]
     api_type: 'read-only' | 'modifiable' | 'system' | 'derived' | 'unauthorized' | 'related'
     description?: string
     long_description?: string
@@ -47,14 +47,14 @@ export namespace UAPI {
     domain?: string
     related?: string
   }
-  
+
   export interface ComplexObject {
     object: { [key: string]: Value}
     api_type: 'read_only' | 'related'
     display_label: string
     related: string
   }
-  
+
   export interface ComplexObjectArray {
     object_array: { [key: string]: Value}[]
     api_type: 'read_only' | 'related'
