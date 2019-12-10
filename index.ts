@@ -9,17 +9,17 @@ export namespace UAPI {
     href: string
   }
 
-  export interface CollectionMetadata {
-    cache?: string
-    restricted?: boolean
+  export interface CollectionMetadata extends SimpleMetadata {
     collection_size?: number
-    validation_response: ValidationResponse
-    validation_information?: string[]
   }
 
   export interface SimpleMetadata {
     validation_response: ValidationResponse
     validation_information?: string[]
+    cache?: {
+      date_time: string
+    }
+    restricted?: boolean
   }
 
   export interface ValidationResponse {
