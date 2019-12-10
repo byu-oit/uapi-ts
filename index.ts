@@ -9,17 +9,17 @@ export namespace UAPI {
     href: string
   }
 
-  export interface CollectionMetadata {
-    cache?: string
-    restricted?: boolean
+  export interface CollectionMetadata extends SimpleMetadata {
     collection_size?: number
-    validation_response: ValidationResponse
-    validation_information?: string[]
   }
 
   export interface SimpleMetadata {
     validation_response: ValidationResponse
     validation_information?: string[]
+    cache?: {
+      date_time: string
+    }
+    restricted?: boolean
   }
 
   export interface ValidationResponse {
@@ -45,20 +45,20 @@ export namespace UAPI {
     long_description?: string
     display_label?: string
     domain?: string
-    related?: string
+    related_resource?: string
   }
 
   export interface ComplexObject<Options> {
     object: { [key: string]: Value | (Value & Options)}
     api_type: 'read-only' | 'related'
     display_label?: string
-    related?: string
+    related_resource?: string
   }
 
   export interface ComplexObjectArray<Options> {
     object_array: { [key: string]: Value | (Value & Options)}[]
     api_type: 'read-only' | 'related'
     display_label?: string
-    related?: string
+    related_resource?: string
   }
 }
