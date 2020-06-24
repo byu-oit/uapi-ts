@@ -7,7 +7,7 @@
     "index.ts"
   ],
   "scripts": {
-    "test": "tsc --noEmit index.ts"
+    "test": "tsc --noEmit index.spec.ts"
   },
   "repository": {
     "type": "git",
