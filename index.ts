@@ -50,9 +50,11 @@ export namespace UAPI {
 
   export type Property<T extends Scalar.Type> = Value<T> | ValueArray<T>
 
-  export type PropertyDictionary = Record<string, Property<any> | ComplexProperty<any>> | null
-
   export type ComplexProperty<T extends PropertyDictionary> = Object<T> | ObjectArray<T>
+
+  export interface PropertyDictionary {
+    [k: string]: Property<any> | ComplexProperty<any>
+  }
 
   export enum ApiType {
     READONLY = 'read-only',
