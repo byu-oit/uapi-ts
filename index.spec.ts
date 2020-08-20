@@ -3,9 +3,7 @@ import { UAPI } from './index'
 export namespace StudentsV3API {
     export type Response = UAPI.Response.Collection<WaitlistedClass>
 
-    export interface WaitlistedClass extends UAPI.Response.Simple {
-        links: UAPI.Links
-        metadata: UAPI.Metadata.Simple
+    export interface WaitlistedClass extends UAPI.PropertyDictionary {
         byu_id: UAPI.Scalar.String
         year_term: UAPI.Scalar.String
         curriculum_id: UAPI.Scalar.String

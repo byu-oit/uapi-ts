@@ -1,13 +1,13 @@
 export namespace UAPI {
   export namespace Response {
-    export interface Simple {
+    export type Simple<T extends PropertyDictionary> = {
       links: Links
       metadata: Metadata.Simple
-    }
-    export interface Collection<T extends Simple> {
+    } & T
+    export interface Collection<T extends PropertyDictionary> {
       links: Links
       metadata: Metadata.Collection
-      values: T[]
+      values: Simple<T>[]
     }
   }
 
