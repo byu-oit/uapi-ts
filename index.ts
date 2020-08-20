@@ -4,7 +4,7 @@ export namespace UAPI {
       links: Links
       metadata: Metadata.Simple
     } & T
-    export interface Collection<T extends PropertyDictionary> {
+    export interface Collection<T extends PropertyDictionary = {}> {
       links: Links
       metadata: Metadata.Collection
       values: Simple<T>[]
