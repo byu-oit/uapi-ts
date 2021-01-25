@@ -21,11 +21,17 @@ export namespace UAPI {
       date_time: string
     }
     export type Restricted = boolean
+    export type FieldSetsReturned = string[]
+    export type FieldSetsAvailable = string[]
+    export type FieldSetsDefault = string[]
     export interface Simple {
       validation_response: ValidationResponse
       validation_information?: ValidationInformation
       cache?: Cache
       restricted?: Restricted
+      field_sets_returned?: FieldSetsReturned,
+      field_sets_available?: FieldSetsAvailable,
+      field_sets_default?: FieldSetsDefault
     }
     export type CollectionSize = number
     export interface Collection extends Simple {
