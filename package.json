@@ -1,13 +1,13 @@
 {
   "name": "@byu-oit/uapi-ts",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "TypeScript definitions of UAPI elements",
   "main": "index.ts",
   "files": [
     "index.ts"
   ],
   "scripts": {
-    "test": "tsc --noEmit index.spec.ts"
+    "test": "tsc --noEmit test/*.spec.ts"
   },
   "repository": {
     "type": "git",
