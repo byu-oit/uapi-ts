@@ -4,7 +4,7 @@ export namespace UAPI {
       links: Links
       metadata: Metadata.Simple
     } & T
-    export interface Collection<T extends PropertyDictionary = {}> {
+    export type Collection<T extends PropertyDictionary = {}> = {
       links: Links
       metadata: Metadata.Collection
       values: Simple<T>[]
@@ -12,19 +12,19 @@ export namespace UAPI {
   }
 
   export namespace Metadata {
-    export interface ValidationResponse<T extends number = number> {
+    export type ValidationResponse<T extends number = number> = {
       code: T
       message: string
     }
     export type ValidationInformation = string[]
-    export interface Cache {
+    export type Cache = {
       date_time: string
     }
     export type Restricted = boolean
     export type FieldSetsReturned = string[]
     export type FieldSetsAvailable = string[]
     export type FieldSetsDefault = string[]
-    export interface Simple {
+    export type Simple = {
       validation_response: ValidationResponse
       validation_information?: ValidationInformation
       cache?: Cache
@@ -34,14 +34,14 @@ export namespace UAPI {
       field_sets_default?: FieldSetsDefault
     }
     export type CollectionSize = number
-    export interface Collection extends Simple {
+    export type Collection = Simple & {
       collection_size?: CollectionSize
     }
   }
 
   export type Links = Record<string, Link>
 
-  export interface Link {
+  export type Link = {
     method: string
     rel: string
     href: string
@@ -58,9 +58,7 @@ export namespace UAPI {
 
   export type ComplexProperty<T extends PropertyDictionary> = Object<T> | ObjectArray<T>
 
-  export interface PropertyDictionary {
-    [k: string]: Property<any> | ComplexProperty<any>
-  }
+  export type PropertyDictionary = Record<string, Property<any> | ComplexProperty<any>>
 
   export enum ApiType {
     READONLY = 'read-only',
@@ -71,8 +69,8 @@ export namespace UAPI {
     RELATED = 'related'
   }
 
-  export interface Value<V extends Scalar.Type> {
-    value: V | null
+  export type Value<T extends Scalar.Type> = T | {
+    value: T | null
     api_type: ApiType.READONLY | ApiType.MODIFIABLE | ApiType.SYSTEM | ApiType.DERIVED | ApiType.UNAUTHORIZED | ApiType.RELATED
     key?: boolean
     description?: string
@@ -82,7 +80,7 @@ export namespace UAPI {
     related_resource?: string
   }
 
-  export interface ValueArray<T extends Scalar.Type> {
+  export type ValueArray<T extends Scalar.Type> = T | {
     value_array: Value<T>[]
     api_type: ApiType.READONLY | ApiType.MODIFIABLE | ApiType.SYSTEM | ApiType.DERIVED | ApiType.UNAUTHORIZED | ApiType.RELATED
     description?: string
@@ -92,14 +90,14 @@ export namespace UAPI {
     related_resource?: string
   }
 
-  export interface Object<T extends PropertyDictionary> {
+  export type Object<T extends PropertyDictionary> = {
     object: T | null
     api_type: ApiType.READONLY | ApiType.RELATED
     display_label?: string
     related_resource?: string
   }
 
-  export interface ObjectArray<T extends PropertyDictionary> {
+  export type ObjectArray<T extends PropertyDictionary> = {
     object_array: T[]
     api_type: ApiType.READONLY | ApiType.RELATED
     display_label?: string
