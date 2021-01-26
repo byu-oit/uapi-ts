@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ master ]
+    types: [ opened, reopened, synchronize, edited ]
+
+env:
+  node_version: "14"
+
+jobs:
+  test:
+    name: Unit Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: ${{ env.node_version }}
+
+      - name: Install
+        run: npm install
+
+      - name: Test
+        run: npm run test
