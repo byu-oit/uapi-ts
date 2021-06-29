@@ -1,10 +1,10 @@
 {
   "name": "@byu-oit/uapi-ts",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "TypeScript definitions of UAPI elements",
-  "main": "index.ts",
+  "main": "index.d.ts",
   "files": [
-    "index.ts"
+    "index.d.ts"
   ],
   "scripts": {
     "test": "tsc --noEmit test/*.spec.ts"

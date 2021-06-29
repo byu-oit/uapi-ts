@@ -38,12 +38,14 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-#       - name: Set up Node.js
-#         uses: actions/setup-node@v2.1.4
-#         with:
-#           node-version: ${{ env.node_version }}
-#           registry-url: https://registry.npmjs.org
-#           scope: '@byu-oit'
+       - name: Set up Node.js
+         uses: actions/setup-node@v2.1.4
+         with:
+           node-version: ${{ env.node_version }}
+           registry-url: https://registry.npmjs.org
+           scope: '@byu-oit'
 
-#       - name: Publish
-#         run: npm publish --access public
+       - name: Publish
+         run: npm publish --access public
+         env:
+           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

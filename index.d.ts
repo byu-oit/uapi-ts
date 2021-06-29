@@ -69,7 +69,7 @@ export namespace UAPI {
     RELATED = 'related'
   }
 
-  export type Value<T extends Scalar.Type> = T | {
+  export type Value<T extends Scalar.Type> = {
     value: T | null
     api_type: ApiType.READONLY | ApiType.MODIFIABLE | ApiType.SYSTEM | ApiType.DERIVED | ApiType.UNAUTHORIZED | ApiType.RELATED
     key?: boolean
@@ -80,7 +80,7 @@ export namespace UAPI {
     related_resource?: string
   }
 
-  export type ValueArray<T extends Scalar.Type> = T | {
+  export type ValueArray<T extends Scalar.Type> = {
     value_array: Value<T>[]
     api_type: ApiType.READONLY | ApiType.MODIFIABLE | ApiType.SYSTEM | ApiType.DERIVED | ApiType.UNAUTHORIZED | ApiType.RELATED
     description?: string
@@ -102,5 +102,40 @@ export namespace UAPI {
     api_type: ApiType.READONLY | ApiType.RELATED
     display_label?: string
     related_resource?: string
+  }
+
+  export namespace Lite {
+    export namespace Response {
+      export type Simple<T extends PropertyDictionary = {}> = {
+        links: Links
+        metadata: Metadata.Simple
+      } & T
+      export type Collection<T extends PropertyDictionary = {}> = {
+        links: Links
+        metadata: Metadata.Collection
+        values: Simple<T>[]
+      }
+    }
+
+    export type Property<T extends Scalar.Type> = Value<T> | ValueArray<T>
+
+    export type ComplexProperty<T extends PropertyDictionary> = Object<T> | ObjectArray<T>
+
+    export type PropertyDictionary = Record<string, Property<any> | ComplexProperty<any>>
+
+    export type Value<T extends Scalar.Type> = T
+
+    export type ValueArray<T extends Scalar.Type> = Value<T>[]
+
+    export type Object<T extends PropertyDictionary> = T | null
+
+    export type ObjectArray<T extends PropertyDictionary> = T[]
+
+    export namespace Scalar {
+      export type Type = string | number | boolean | null
+      export type String = Value<string>
+      export type Number = Value<number>
+      export type Boolean = Value<boolean>
+    }
   }
 }
