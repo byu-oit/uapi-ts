@@ -60,18 +60,13 @@ export namespace UAPI {
 
   export type PropertyDictionary = Record<string, Property<any> | ComplexProperty<any>>
 
-  export enum ApiType {
-    READONLY = 'read-only',
-    MODIFIABLE = 'modifiable',
-    SYSTEM = 'system',
-    DERIVED = 'derived',
-    UNAUTHORIZED = 'unauthorized',
-    RELATED = 'related'
-  }
+  export type ApiType = 'readonly' | 'modifiable' | 'system' | 'derived' | 'unauthorized' | 'related'
+
+  export type ObjectApiType = 'readonly' | 'related'
 
   export type Value<T extends Scalar.Type> = {
     value: T | null
-    api_type: ApiType.READONLY | ApiType.MODIFIABLE | ApiType.SYSTEM | ApiType.DERIVED | ApiType.UNAUTHORIZED | ApiType.RELATED
+    api_type: ApiType
     key?: boolean
     description?: string
     long_description?: string
@@ -82,7 +77,7 @@ export namespace UAPI {
 
   export type ValueArray<T extends Scalar.Type> = {
     value_array: Value<T>[]
-    api_type: ApiType.READONLY | ApiType.MODIFIABLE | ApiType.SYSTEM | ApiType.DERIVED | ApiType.UNAUTHORIZED | ApiType.RELATED
+    api_type: ApiType
     description?: string
     long_description?: string
     display_label?: string
@@ -92,14 +87,14 @@ export namespace UAPI {
 
   export type Object<T extends PropertyDictionary> = {
     object: T | null
-    api_type: ApiType.READONLY | ApiType.RELATED
+    api_type: ObjectApiType
     display_label?: string
     related_resource?: string
   }
 
   export type ObjectArray<T extends PropertyDictionary> = {
     object_array: T[]
-    api_type: ApiType.READONLY | ApiType.RELATED
+    api_type: ObjectApiType
     display_label?: string
     related_resource?: string
   }
