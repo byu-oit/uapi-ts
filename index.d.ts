@@ -60,9 +60,9 @@ export namespace UAPI {
 
   export type PropertyDictionary = Record<string, Property<any> | ComplexProperty<any>>
 
-  export type ApiType = 'readonly' | 'modifiable' | 'system' | 'derived' | 'unauthorized' | 'related'
+  export type ApiType = 'read-only' | 'modifiable' | 'system' | 'derived' | 'unauthorized' | 'related'
 
-  export type ObjectApiType = 'readonly' | 'related'
+  export type ObjectApiType = 'read-only' | 'related'
 
   export type Value<T extends Scalar.Type> = {
     value: T | null
