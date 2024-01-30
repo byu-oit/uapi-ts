@@ -6,7 +6,7 @@ on:
     types: [ opened, reopened, synchronize, edited ]
 
 env:
-  node_version: "14"
+  node_version: "20"
 
 jobs:
   test:
@@ -14,10 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2.1.4
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ env.node_version }}
 

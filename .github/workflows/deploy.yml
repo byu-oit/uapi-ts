@@ -5,7 +5,7 @@ on:
     branches: [master]
 
 env:
-  node_version: "14"
+  node_version: "20"
 
 jobs:
   publish:
@@ -21,7 +21,7 @@ jobs:
           token: ${{ github.token }}
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2.1.4
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ env.node_version }}
           registry-url: https://npm.pkg.github.com
@@ -39,7 +39,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2.1.4
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ env.node_version }}
           registry-url: https://registry.npmjs.org
